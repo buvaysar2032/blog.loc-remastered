@@ -5,7 +5,7 @@ use admin\models\UserAdminSearch;
 use admin\modules\modelExportImport\models\ModelImportLogSearch;
 use admin\modules\rbac\components\RbacNav;
 use common\components\helpers\UserUrl;
-use common\models\{ExportListSearch, TextSearch};
+use common\models\{CodeCategorySearch, CodeSearch, ExportListSearch, TextSearch};
 use common\modules\log\Log;
 use common\modules\mail\models\{MailingLogSearch, MailingSearch, MailTemplateSearch};
 use common\modules\notification\widgets\NotificationBell;
@@ -52,7 +52,15 @@ if (!Yii::$app->user->isGuest) {
                 [
                     'label' => Icon::show('align-justify') . 'Тексты',
                     'url' => UserUrl::setFilters(TextSearch::class, ['/text/index'])
-                ]
+                ],
+                [
+                    'label' => Yii::t('app', 'Code Categories'),
+                    'url' => UserUrl::setFilters(CodeCategorySearch::class, ['/code-category/index'])
+                ],
+                [
+                    'label' => Yii::t('app', 'Codes'),
+                    'url' => UserUrl::setFilters(CodeSearch::class, ['/code/index'])
+                ],
             ]
         ],
         [

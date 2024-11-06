@@ -89,6 +89,11 @@ $this->params['layout_class'] = 'container-fluid';
             ]),
 
             [
+                'attribute' => 'codesCount',
+                'label' => Yii::t('app', 'Codes'),
+            ],
+
+            [
                 'class' => GroupedActionColumn::class,
                 'template' => '{view} {mail} {delete}',
                 'buttons' => [

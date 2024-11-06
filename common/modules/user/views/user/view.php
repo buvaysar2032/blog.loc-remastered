@@ -72,7 +72,21 @@ $this->params['breadcrumbs'][] = $this->title;
             Column::widget(['attr' => 'last_login_at', 'format' => 'datetime']),
             Column::widget(['attr' => 'created_at', 'format' => 'datetime']),
             Column::widget(['attr' => 'updated_at', 'format' => 'datetime']),
-            Column::widget(['attr' => 'last_ip', 'format' => 'ip'])
+            Column::widget(['attr' => 'last_ip', 'format' => 'ip']),
+
+            [
+                'label' => Yii::t('app', 'Codes'),
+                'value' => function (User $model) {
+                    /** @var common\models\Code[] $codes */
+                    $codes = $model->getCodes()->all();
+                    $output = '';
+                    foreach ($codes as $code) {
+                        $output .= $code->code . '<br>';
+                    }
+                    return $output;
+                },
+                'format' => 'raw'
+            ],
         ]
     ]) ?>
 

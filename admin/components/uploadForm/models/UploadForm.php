@@ -2,6 +2,7 @@
 
 namespace admin\components\uploadForm\models;
 
+use common\models\CodeCategory;
 use yii\base\Model;
 use yii\web\UploadedFile;
 
@@ -31,6 +32,11 @@ class UploadForm extends Model
     public string $extensions = 'csv,xlsx,ods';
 
     /**
+     * Код категории
+     */
+    public ?int $code_category_id = null;
+
+    /**
      * {@inheritdoc}
      */
     final public function rules(): array
@@ -42,7 +48,9 @@ class UploadForm extends Model
                 'skipOnEmpty' => false,
                 'extensions' => $this->extensions,
                 'checkExtensionByMimeType' => false
-            ]
+            ],
+            [['code_category_id'], 'integer'],
+            [['code_category_id'], 'exist', 'skipOnError' => true, 'targetClass' => CodeCategory::class, 'targetAttribute' => ['code_category_id' => 'id']]
         ];
     }
 
