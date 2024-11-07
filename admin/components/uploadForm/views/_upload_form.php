@@ -56,7 +56,9 @@ Modal::begin([
 
             <?= $form->field($model, 'file')->label(false)->fileInput() ?>
 
-            <?= $form->field($model, 'code_category_id')->widget(Select2::class, ['data' => CodeCategory::findList(), 'hideSearch' => true]) ?>
+            <?= $form->field($model, 'code_category_id')->label(Yii::t('app', 'Code Category ID'))
+                ->widget(Select2::class, ['data' => CodeCategory::findList(), 'hideSearch' => true])
+            ?>
 
             <div class='form-group'>
                 <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>

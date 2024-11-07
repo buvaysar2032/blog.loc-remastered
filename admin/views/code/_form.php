@@ -26,14 +26,6 @@ use yii\helpers\Url;
 
     <?= $form->field($model, 'code_category_id')->widget(Select2::class, ['data' => CodeCategory::findList(), 'hideSearch' => true]) ?>
 
-    <?= $form->field($model, 'user_id')->textInput() ?>
-
-    <?= $form->field($model, 'taken_at')->textInput() ?>
-
-    <?= $form->field($model, 'user_ip')->textInput() ?>
-
-    <?= $form->field($model, 'public_status')->widget(Select2::class, ['data' => CodeStatus::indexedDescriptions(), 'hideSearch' => true]) ?>
-
     <div class="form-group">
         <?php if ($isCreate) {
             echo Html::submitButton(

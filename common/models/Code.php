@@ -87,10 +87,8 @@ class Code extends AppActiveRecord implements UploadInterface
 
         $parser->fileRowIterate(
             $model->file->tempName,
-            /**
-             * @param Cell[] $cells
-             */
             static function (array $cells, int $key) use ($model, &$rows) {
+                $batchSize = 5000;
                 if ($key === 1) {
                     return;
                 }
@@ -100,13 +98,24 @@ class Code extends AppActiveRecord implements UploadInterface
                     'promocode' => $cells[1]->getValue(),
                     'code_category_id' => $model->code_category_id,
                 ];
+
+                if (count($rows) >= $batchSize) {
+                    Yii::$app->db->createCommand()
+                        ->batchInsert(
+                            self::tableName(),
+                            ['code', 'promocode', 'code_category_id'],
+                            $rows
+                        )
+                        ->execute();
+                    $rows = [];
+                }
             }
         );
 
         if (!empty($rows)) {
             Yii::$app->db->createCommand()
                 ->batchInsert(
-                    '{{%code}}',
+                    self::tableName(),
                     ['code', 'promocode', 'code_category_id'],
                     $rows
                 )

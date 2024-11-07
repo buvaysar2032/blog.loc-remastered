@@ -171,4 +171,17 @@ return [
     'Download Link' => 'Ссылка на скачивание',
     'Count' => 'Кол-во',
     'Date' => 'Дата',
+
+    'Codes' => 'Коды',
+    'Code' => 'Код',
+    'Create Code' => 'Добавить код',
+    'Promocode' => 'Промокод',
+    'Code Category ID' => 'Категория кода',
+    'Taken At' => 'Дата выдачи',
+    'User Ip' => 'IP-адрес пользователя',
+    'Public Status' => 'Статус',
+    'Update Code: {name}' => 'Изменить код: {name}',
+    'Code Categories' => 'Категории кода',
+    'Create Code Category' => 'Добавить категорию кода',
+    'Update Code Category: {name}' => 'Изменить категорию кода: {name}'
 ];

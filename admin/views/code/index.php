@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
         echo UploadFormWidget::widget([
             'action' => Url::to(['code/upload']),
             'btnMessage' => 'Загрузить из файла',
-            'title' => 'Загрузить викторину',
+            'title' => 'Загрузить коды',
         ])
         ?>
     </div>
@@ -63,7 +63,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ]),
             ColumnDate::widget(['attr' => 'taken_at', 'searchModel' => $searchModel, 'editable' => false]),
             Column::widget(['attr' => 'user_ip', 'format' => 'ip', 'editable' => false]),
-            ColumnSelect2::widget(['attr' => 'public_status', 'items' => CodeStatus::indexedDescriptions(), 'hideSearch' => true]),
+            ColumnSelect2::widget(['attr' => 'public_status', 'items' => CodeStatus::class, 'hideSearch' => true, 'editable' => false]),
 
             ['class' => GroupedActionColumn::class]
         ]

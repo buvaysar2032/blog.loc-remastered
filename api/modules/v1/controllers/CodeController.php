@@ -17,7 +17,7 @@ class CodeController extends AppController
             return $this->returnError('Code is required.');
         }
 
-        $codeModel = Code::findOne(['code' => $code, 'public_status' => 0]);
+        $codeModel = Code::findOne(['public_status' => 0, 'code' => $code]);
 
         $codeModel->user_id = $userId;
         $codeModel->taken_at = time();
